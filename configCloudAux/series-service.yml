@@ -1,45 +1,42 @@
-server:
-  port: 8121
-  servlet:
-    context-path: /series/
-
 spring:
-  eureka:
-    client:
-      register-with-eureka: true
-      fetch-registry: true
-      serviceUrl:
-        defaultZone: http://eureka:8761/eureka}
+  application:
+    name: serie-service
+  config:
+    import: optional:configserver:http://config-service:8888
+  #    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      profile: ${PROFILE:dev}
   datasource:
-    url: jdbc:h2:mem:test
-    driverClassName: org.h2.Driver
-    username: sa
-    password: sa
-  jpa:
-    generate-ddl: true
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    format-sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  rabbitmq:
-    username: guest
-    password: guest
-    host: rabbitmq3
-    port: 5672
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://db_avaliacao2_movie:33060/avaliacao2_movie?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimeZone=UTC
+    #    url: jdbc:mysql://localhost:33061/avaliacao2_movie?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimeZone=UTC
+    jpa:
+      properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.ddl-auto: update
+      generate-ddl: true
+      show-sql: true
+eureka:
+  instance:
+    hostname: eureka-service
+  #    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
 
 queue:
-  movie:
-    name: SerieQueue
-
-mensagem: hello world
+  api-serie:
+    name: serieQueue
 
 management:
+  info:
+    env:
+      enabled: true
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: health
