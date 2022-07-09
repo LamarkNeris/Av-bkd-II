@@ -1,0 +1,8 @@
+server:
+  port: ${PORT:8002}
+  servlet:
+    context-path: /catalog/
+queue:
+  movie:
+    name: MovieQueue    
+    
