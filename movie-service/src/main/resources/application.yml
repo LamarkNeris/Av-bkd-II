@@ -1,0 +1,37 @@
+server:
+  port: 8121
+  servlet:
+    context-path: /movies/
+
+spring:
+  application:
+    name: movie-service
+  zipkin:
+    base-url: http://zipkin-service:9411/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://db_avaliacao2_serie:3306/dbSeries?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimeZone=UTC
+
+    jpa:
+      properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.ddl-auto: update
+      generate-ddl: true
+      show-sql: true
+eureka:
+  instance:
+    hostname: eureka-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+mensagem: hello world
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

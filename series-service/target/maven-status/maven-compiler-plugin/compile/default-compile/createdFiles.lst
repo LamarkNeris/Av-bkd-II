@@ -1,0 +1,7 @@
+com\dh\seriesservice\domain\DataLoader.class
+com\dh\seriesservice\SeriesServiceApplication.class
+com\dh\seriesservice\controller\TestController.class
+com\dh\seriesservice\service\SerieService.class
+com\dh\seriesservice\controller\SerieController.class
+com\dh\seriesservice\model\Serie.class
+com\dh\seriesservice\repository\SerieRepository.class

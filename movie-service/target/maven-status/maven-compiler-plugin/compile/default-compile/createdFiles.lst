@@ -1,0 +1,7 @@
+com\example\movieservice\api\controller\TestController.class
+com\example\movieservice\domain\model\Movie.class
+com\example\movieservice\domain\repository\MovieRepository.class
+com\example\movieservice\domain\data\DataLoader.class
+com\example\movieservice\MovieServiceApplication.class
+com\example\movieservice\api\controller\MovieController.class
+com\example\movieservice\api\service\MovieService.class
